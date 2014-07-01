@@ -15,8 +15,9 @@
         padding: 0;
       }
       li {
+        border-bottom: 1px solid #efefef;
         margin: 1em 0;
-        padding: 0;
+        padding: 0 0 1em 0;
       }
       li a {
         display: block;
@@ -31,6 +32,12 @@
         font-size: 0.9em;
         line-height: 1.6;
         margin: 0;
+      }
+      .price {
+        color: #1c0;
+        float: right;
+        margin: 0;
+        padding: 0;
       }
 
       .error {
@@ -48,6 +55,7 @@
       <ul>
         <template repeat="{{p,i in filtered}}">
           <li>
+            <p class="price">{{p.price | money}}</p>
             <h4><a href="" on-click="{{view}}" data-index="{{i}}">{{p.name}}</a></h4>
             <p>{{p.description}}</p>
           </li>
@@ -59,12 +67,15 @@
   <script type="text/javascript">
     Polymer({
       products: [
-        { name:'Snappy shoes', description: 'Curabitur blandit tempus porttitor.' },
-        { name:'HUGE Hat!', description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas sed diam eget risus varius blandit sit amet non magna.' },
-        { name:'Smelly Socks', description: 'Aenean lacinia bibendum nulla sed consectetur.' },
-        { name:'Lonesome Loafers', description: 'Nulla vitae elit libero, a pharetra augue.' },
-        { name:'Slippery Shoes', description: 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.' },
+        { name:'Snappy shoes', price: 999, description: 'Curabitur blandit tempus porttitor.' },
+        { name:'HUGE Hat!', price: 1299, description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas sed diam eget risus varius blandit sit amet non magna.' },
+        { name:'Smelly Socks', price: 3000, description: 'Aenean lacinia bibendum nulla sed consectetur.' },
+        { name:'Lonesome Loafers', price: 2175, description: 'Nulla vitae elit libero, a pharetra augue.' },
+        { name:'Slippery Shoes', price: 19983, description: 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.' },
       ],
+      money: function (cents) {
+        return '$' + cents/100;
+      },
       ready: function () {
         //this.products = this.products || [{name:'foo'},{name:'bar'}];
         this.filtered = this.products;
