@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
-    <title>PersonalizationPop</title>
+    <title>Product List / Polymer Demo</title>
     <style>
       body {
         background: #d6d6d6;
         font: 16px "Helvetica Neue", Helvetica, Ariel, sans-serif;
         margin: 0;
-        padding: 0;
+        padding: 3em 0;
         text-align: center;
       }
       .container {
@@ -20,7 +20,13 @@
         text-align: left;
         width: 500px;
       }
-      footer a {
+      header {
+      }
+      h1 {
+        font-weight: 300;
+        margin: 0 0 1em 0;
+      }
+      a {
         color: #777;
         font-size: 0.9em;
       }
@@ -29,7 +35,11 @@
     <link rel="import" href="components/product-list/product-list.html">
   </head>
   <body>
+    <header>
+      <a href="..">Back to all demos</a> 
+    </header>
     <div class="container">
+      <h1 class="page-header">Product Listing</h1>
       <product-list></product-list>
     </div>
     <footer>
