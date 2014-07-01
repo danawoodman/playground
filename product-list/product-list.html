@@ -1,0 +1,31 @@
+<link rel="import" href="components/vendor/polymer/polymer.html">
+<link rel="import" href="components/vendor/core-ajax/core-ajax.html">
+
+<polymer-element name="product-list" attributes="files">
+  <template>
+    <link rel="stylesheet" href="./product-list.css" type="text/css">
+    <!--<core-ajax-->
+      <!--auto-->
+      <!--id="ajax"-->
+      <!--url="http://localhost:3000/api/v1/products"-->
+      <!--handleAs="json"-->
+      <!--on-core-error="{{handleError}}"-->
+      <!--on-core-response="{{handleResponse}}"></core-ajax>-->
+
+      <template if="{{error}}">
+        <p class="error">
+          There was an error getting products :-(
+          <a href="" on-click="{{fetch}}">Try again?</a>
+        </p>
+      </template>
+
+      <template if="{{products}}">
+        <ul>
+          <template repeat="{{p,i in products}}">
+            <li><a href="" on-click="{{customize}}" data-index="{{i}}">Customize "{{p.name}}"</a></li>
+          </template>
+        </ul>
+      </template>
+  </template>
+  <script src="./product-list.js" type="text/javascript"></script>
+</polymer-element>
