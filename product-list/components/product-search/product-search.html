@@ -1,0 +1,36 @@
+<link rel="import" href="../vendor/polymer/polymer.html">
+<link rel="import" href="../vendor/core-ajax/core-ajax.html">
+
+<polymer-element name="product-search" attributes="products filtered">
+  <template>
+    <style>
+      form {
+        background: #ececec;
+        margin-bottom: 3em;
+        padding: 1em 1.75em;
+      }
+    </style>
+    <form>
+      <label for="query">Search:</label>
+      <input autofocus type="text" id="query" value="{{query}}" on-keyup="{{search}}">
+    </form>
+  </template>
+  <script type="text/javascript">
+    Polymer({
+      ready: function () {
+        this.filtered = this.filtered || [];
+        this.products = this.products || [];
+        console.log('Initial products:', this.products);
+        this.$.query.focus();
+      },
+      search: function (e) {
+        console.log('Search:', this.query);
+        var regex = new RegExp(this.query, 'i');
+        this.filtered = this.products.filter(function (product) {
+          return regex.test(product.name);
+        });
+        console.log('Filtered products:', this.filtered);
+      },
+    });
+  </script>
+</polymer-element>
